@@ -5,11 +5,16 @@
 #include <codecvt>
 #include <sstream>
 
-#include <rapidjson/rapidjson.h>
-#include <rapidjson/document.h>
-#include <rapidjson/stream.h>
-#include <rapidjson/istreamwrapper.h>
-#include <rapidjson/filereadstream.h>
+//#include <rapidjson/rapidjson.h>
+//#include <rapidjson/document.h>
+//#include <rapidjson/stream.h>
+//#include <rapidjson/istreamwrapper.h>
+//#include <rapidjson/filereadstream.h>
+#include "headeronlylib/rapidjson/rapidjson.h"
+#include "headeronlylib/rapidjson/document.h"
+#include "headeronlylib/rapidjson/stream.h"
+#include "headeronlylib/rapidjson/istreamwrapper.h"
+#include "headeronlylib/rapidjson/filereadstream.h"
 
 #include "Block.h"
 
@@ -242,7 +247,7 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 		fwprintf_s(pOFile, L"f %d//%d %d//%d %d//%d\n", 2, 1, 8, 1, 4, 1);*/
 
 		fclose(pOFile);
-		ShellExecute(NULL, L"open", L"explorer.exe", outputFile.c_str(), NULL, SW_SHOWDEFAULT);
+		ShellExecute(NULL, "open", "explorer.exe", g_ConverterUtf8Utf16.to_bytes(outputFile.c_str()).c_str(), NULL, SW_SHOWDEFAULT);
 		return 0;
 	}
 	else {
