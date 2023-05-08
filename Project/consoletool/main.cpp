@@ -5,16 +5,11 @@
 #include <codecvt>
 #include <sstream>
 
-//#include <rapidjson/rapidjson.h>
-//#include <rapidjson/document.h>
-//#include <rapidjson/stream.h>
-//#include <rapidjson/istreamwrapper.h>
-//#include <rapidjson/filereadstream.h>
-#include "headeronlylib/rapidjson/rapidjson.h"
-#include "headeronlylib/rapidjson/document.h"
-#include "headeronlylib/rapidjson/stream.h"
-#include "headeronlylib/rapidjson/istreamwrapper.h"
-#include "headeronlylib/rapidjson/filereadstream.h"
+#include <rapidjson/rapidjson.h>
+#include <rapidjson/document.h>
+#include <rapidjson/stream.h>
+#include <rapidjson/istreamwrapper.h>
+#include <rapidjson/filereadstream.h>
 
 #include "Block.h"
 
