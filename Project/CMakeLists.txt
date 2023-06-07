@@ -20,3 +20,5 @@ target_include_directories(
     "${CommonCodeIncludeDir}"
     "${HeaderOnlyLibIncludeDir}"
 )
+
+target_link_libraries( consoletool PUBLIC CommonCode)

@@ -14,6 +14,9 @@ namespace aze
 		printf("Current arguments:\n");
 		for (int i{ 0 }; i < argc; ++i)
 		{
+			printf("[");
+			printf(std::to_string(i).c_str());
+			printf("] ");
 			wprintf(argv[i]);
 			printf("\n");
 		}
@@ -28,32 +31,59 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 	bool tryOpen{ false };
 	if (argc > 1)
 	{
-		if (argc > 2 && wcscmp(argv[1], L"-i") == 0)
+		if (argc > 2)
 		{
-			inputFile = argv[2];
+			if (wcscmp(argv[1], L"-i") == 0)
+			{
+				inputFile = argv[2];
+			}
+			else if (wcscmp(argv[1], L"-o") == 0)
+			{
+				outputFile = argv[2];
+			}
+			else if (wcscmp(argv[1], L"-s") == 0)
+			{
+				tryOpen = true;
+			}
+			else
+			{
+				return aze::InvalidArguments(argc, argv);
+			}
 		}
-		else if (argc > 2 && wcscmp(argv[1], L"-o")==0)
+		else if (!(wcscmp(argv[1], L"-s") == 0))
 		{
-			outputFile = argv[2];
-		}
-		else 
-		{
-			aze::InvalidArguments(argc, argv);
-			return -1;
+			return aze::InvalidArguments(argc, argv);
 		}
 
-		if (argc > 4 && wcscmp(argv[3], L"-i") == 0)
+		if (argc > 4)
 		{
-			inputFile = argv[4];
+			if (wcscmp(argv[3], L"-i") == 0)
+			{
+				inputFile = argv[4];
+			}
+			else if (wcscmp(argv[3], L"-o") == 0)
+			{
+				outputFile = argv[4];
+			}
+			else if (wcscmp(argv[3], L"-s") == 0)
+			{
+				tryOpen = true;
+			}
+			else
+			{
+				return aze::InvalidArguments(argc, argv);
+			}
 		}
-		else if (argc > 4 && wcscmp(argv[3], L"-o") == 0)
+
+		if (tryOpen == false)
 		{
-			outputFile = argv[4];
-		}
-		else
-		{
-			aze::InvalidArguments(argc, argv);
-			return -1;
+			for (int i{ 1 }; i < argc; ++i)
+			{
+				if (wcscmp(argv[i], L"-s") == 0)
+				{
+					tryOpen = true;
+				}
+			}
 		}
 	}
 
@@ -76,6 +106,12 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 	}
 	
 	printf("Success!\n");
+	printf("Input: ");
+	printf(aze::g_ConverterUtf8Utf16.to_bytes(inputFile.c_str()).c_str());
+	printf("\n");
+	printf("Output: ");
+	printf(aze::g_ConverterUtf8Utf16.to_bytes(outputFile.c_str()).c_str());
+	printf("\n");
 
 	if (tryOpen)
 	{

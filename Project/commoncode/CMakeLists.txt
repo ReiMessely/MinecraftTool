@@ -1,4 +1,10 @@
 # Common code
-add_library(CommonCode "Block.h" "Vector3.h" "SceneParser.h" "SceneParser.cpp" "Utils.h")
+add_library(CommonCode "Block.h" "Vector3.h" "Utils.h" "SceneParser.h" "SceneParser.cpp")
 
-Set(CommonCodeIncludeDir "${CMAKE_CURRENT_SOURCE_DIR}" PARENT_SCOPE)
+set(CommonCodeIncludeDir "${CMAKE_CURRENT_SOURCE_DIR}" PARENT_SCOPE)
+
+target_include_directories(
+    CommonCode PUBLIC
+    "${CommonCodeIncludeDir}"
+    "${HeaderOnlyIncludeDir}"
+)

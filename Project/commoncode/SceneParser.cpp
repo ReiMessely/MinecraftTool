@@ -3,6 +3,12 @@
 #include <codecvt>
 #include <sstream>
 
+#include "../headeronlylib/rapidjson/rapidjson.h"
+#include "../headeronlylib/rapidjson/document.h"
+#include "../headeronlylib/rapidjson/stream.h"
+#include "../headeronlylib/rapidjson/istreamwrapper.h"
+#include "../headeronlylib/rapidjson/filereadstream.h"
+
 //#include <rapidjson/rapidjson.h>
 //#include <rapidjson/document.h>
 //#include <rapidjson/stream.h>
@@ -23,7 +29,7 @@ bool aze::SceneParser::ReadJson(const std::wstring& inputFile)
 		return false;
 	}
 
-	/*if (std::ifstream is{ inputFile })
+	if (std::ifstream is{ inputFile })
 	{
 		using namespace rapidjson;
 		IStreamWrapper ism{ is };
@@ -75,7 +81,7 @@ bool aze::SceneParser::ReadJson(const std::wstring& inputFile)
 			}
 		}
 		return true;
-	}*/
+	}
 	return false;
 }
 
@@ -83,7 +89,8 @@ bool aze::SceneParser::WriteObj(const std::wstring& outputFile)
 {
 	FILE* pOFile = nullptr;
 	_wfopen_s(&pOFile, outputFile.c_str(), L"w+,ccs=UTF-8");
-	if (pOFile != nullptr) {
+	if (pOFile != nullptr) 
+	{
 		// it was possible to create the file for writing.
 		const wchar_t* text = L"#∂ is the symbol for partial derivative.\n";
 		fwrite(text, wcslen(text) * sizeof(wchar_t), 1, pOFile);
