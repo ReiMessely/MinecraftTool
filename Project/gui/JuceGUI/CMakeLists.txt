@@ -29,3 +29,11 @@ target_link_libraries(MinecraftToolGUI
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags
 )
+
+target_include_directories(
+	MinecraftToolGUI PUBLIC 
+	"${CommonCodeIncludeDir}"
+)
+target_link_libraries(
+	MinecraftToolGUI PUBLIC CommonCode
+)

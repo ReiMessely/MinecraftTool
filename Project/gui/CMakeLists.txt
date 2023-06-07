@@ -6,4 +6,3 @@ add_subdirectory("JUCE")
 # common library add_subdirectory
 # add the JuceGUI folder with your own code to the project.
 add_subdirectory("JuceGUI")
-

@@ -1,11 +1,5 @@
 #include "TableModel.h"
 
-TableModel::TableModel()
-{
-	m_Vectors.push_back({ "vector1",3,2,1 });
-	m_Vectors.push_back({ "vector2",7,6,3 });
-}
-
 int TableModel::getNumRows()
 {
 	return m_Vectors.size();
