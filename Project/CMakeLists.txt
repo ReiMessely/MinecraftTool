@@ -11,6 +11,10 @@ message("Include directory: ${HeaderOnlyIncludeDir}")
 add_subdirectory(commoncode)
 message("Include directory: ${CommonCodeIncludeDir}")
 
+# Adding the subdirectory builds your GUI tool seperately
+add_subdirectory(gui)
+message("Include directory: ${GuiIncludeDirectory}")
+
 add_subdirectory(consoletool)
 
 target_include_directories(
